@@ -55,7 +55,16 @@ class _FilterScreenState extends State<FilterScreen> {
       appBar: AppBar(
         title: const Text('Filter'),
         actions: [
-          IconButton(onPressed: saveFunction, icon: const Icon(Icons.save))
+          IconButton(
+              onPressed: () {
+                saveFunction;
+                const sBar = SnackBar(
+                  content: Text('Filtered Done'),
+                  padding: EdgeInsets.all(20),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(sBar);
+              },
+              icon: const Icon(Icons.save))
         ],
       ),
       body: Container(

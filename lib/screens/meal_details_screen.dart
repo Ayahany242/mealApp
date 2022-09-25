@@ -40,9 +40,18 @@ class MealDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
+      // Button Favorite
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           addRemoveMeal(selectedMeal.id);
+          // SnackBar
+          final sBar = SnackBar(
+            content: isFavorite(selectedMeal.id)
+                ? const Text('The Meal Moved to Favorite List')
+                : const Text('The Meal Removed From Favorite List'),
+            padding: const EdgeInsets.all(20),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(sBar);
         },
         splashColor: Colors.amber,
         child: Icon(
